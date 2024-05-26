@@ -157,6 +157,5 @@ use App\Models\Post;
 //});
 
 
-Route::get("/so")
 
 require __DIR__.'/auth.php';
