@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +17,146 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//
+//
+//    return view('welcome');
+//});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
+//Route::get("/posts/{title}/{id}", [PostsController::class, "index"]);
+//Route::resource('/posts', PostsController::class);
+//
+//Route::get("/contact", [PostsController::class, "contact"]);
+//Route::get("/message/{name}", [PostsController::class, "greet_person"]);
+//
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
+//
+//Route::middleware('auth')->group(function () {
+//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//});
+
+//Route::get("/insert", function (){
+//  $rowsAffected = DB::insert("insert into posts(title, content) values (?, ?)", ["Laravel is the next big thing", "Laravel is the best thing to happen to PHP"]);
+//
+//  return $rowsAffected;
+//});
+//
+//Route::get("/select", function (){
+//    $posts = DB::select("select * from posts");
+//
+//    return $posts;
+//});
+//
+//Route::get("select/{id}", function ($id){
+//    $posts= DB::select("select * from posts where id = ?", [$id]);
+//
+//    foreach ($posts as $post){
+//       echo $post->title." => ".$post->content;
+//    }
+//});
+//
+//Route::get("/update/{id}", function ($id){
+//   $affectedRows = DB::update("update posts set title ='Updated title' where id = ?", [$id]);
+//
+//   return $affectedRows;
+//});
+//
+//Route::get("/delete/{id}", function ($id){
+//    $affectedRows = DB::delete("delete from posts where id=?", [$id]);
+//    return $affectedRows;
+//});
+
+
+//ELOQUENT ORM
+
+//Route::get("/read", function (){
+//    $posts = Post::all();
+//
+//    foreach ($posts as $post){
+//        echo ("<h1>".$post->title."</h1>");
+//    }
+//});
+
+//Route::get("find/{id}", function ($id){
+//    $post = Post::all()->firstWhere("id", "=", $id);
+//
+//    return  $post;
+//});
+
+//Route::get("/findwhere", function (){
+//    $posts = Post::where("id", "=", 3)->orderBy("id", "ASC")->take(1)->get();
+//
+//    return $posts;
+//});
+
+
+//Route::get("/findmore", function (){
+////    $posts =Post::findOrFail(1);
+////
+////    return $posts;
+//
+//    $post = Post::where("users_count", "<", 50 )->firstOrFail();
+//
+//
+//});
+
+//Route::get("/basicinseart", function (){
+//
+//    $post  = new Post();
+//    $post->title = "I am learning laravel";
+//    $post->content="So far so good";
+//
+//    $post->save();
+//
+//    return $post;
+//
+//});
+
+//Route::get("/basicupdate", function (){
+//    $post = Post::find(7);
+//    $post->title="Updated title";
+//
+//    $post->save();
+//    return $post;
+//});
+
+
+//Route::get("/create", function (){
+//    $created = Post::create([
+//       "title"=>"The create method",
+//       "content"=>"Wao, I am learning alot with Edwin"
+//    ]);
+//
+//    return $created;
+//});
+//
+//Route::get("/upsert", function (){
+//   $upserted = Post::upsert([
+//        ['title'=>"This is the first tile",'content'=>"Post content", "id"=>3],
+//        ['title'=>"This updates post with the id of 7",'content'=>'updated content', 'id'=>7]
+//    ], ['id'], ['title']);
+//
+//   return $upserted;
+//});
+
+//Route::get("/delete", function (){
+//
+//   $post = Post::find(3);
+//    $post->delete();
+//    return $post;
+//});
+
+//Route::get("/delete2", function (){
+//   Post::destroy([5,6]);
+//});
+
+
+Route::get("/so")
 
 require __DIR__.'/auth.php';
