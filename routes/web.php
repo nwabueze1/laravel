@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use \App\Models\User;
+use \App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +108,7 @@ use App\Models\Post;
 //
 //});
 
-//Route::get("/basicinseart", function (){
+//Route::get("/basicinsert", function (){
 //
 //    $post  = new Post();
 //    $post->title = "I am learning laravel";
@@ -156,6 +158,55 @@ use App\Models\Post;
 //   Post::destroy([5,6]);
 //});
 
+//Route::get("/softdelete", function (){
+//    $deleted = Post::find(18);
+//
+//    return $deleted;
+//});
 
+//Route::get("/readsoftdelete", function (){
+//    $deleted = Post::onlyTrashed()->get();
+//    return $deleted;
+//});
+
+
+//Route::get("/restoresoftdelete", function (){
+//    $post = Post::withTrashed()->where('id', 17)->restore();
+//
+//    return $post;
+//});
+
+//One to One relationship
+//Route::get("/user/{id}/post", function (string $id){
+//    return User::find($id)->post;
+//});
+//
+//Route::get("/post/{id}/user", function (string $id){
+//        return Post::find($id)->user;
+//});
+
+//Route::get('/posts', function (){
+//    $user = User::find(1);
+//
+//    foreach ($user->posts as $post){
+//        echo $post->title."<br/>";
+//    }
+//
+//});
+
+//Route::get("/user/{id}/roles", function (string $id){
+//    return User::find($id)->roles()->orderBy('id', 'DESC')->get();
+//});
+//
+//Route::get("/role/{id}/users", function (string $id){
+//    return Role::find($id)->users;
+//});
+//
+//Route::get("user/pivot",function (){
+//    $user  = User::find(1);
+//    foreach ($user->roles  as $role){
+//    echo $role->pivot->created_at;
+//    }
+//});
 
 require __DIR__.'/auth.php';
