@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use \App\Models\User;
 use \App\Models\Role;
+use \App\Models\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -208,5 +209,9 @@ use \App\Models\Role;
 //    echo $role->pivot->created_at;
 //    }
 //});
+
+Route::get("/user/country", function (){
+    return Country::find(1)->posts;
+});
 
 require __DIR__.'/auth.php';
