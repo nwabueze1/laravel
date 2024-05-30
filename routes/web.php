@@ -210,8 +210,40 @@ use \App\Models\Country;
 //    }
 //});
 
-Route::get("/user/country", function (){
-    return Country::find(1)->posts;
+//Route::get("/user/country", function (){
+//    return Country::find(1)->posts;
+//});
+
+//Route::get('/user/{id}', function ($id){
+//
+//    $user = User::find($id);
+//
+//    return $user->photo;
+//
+//});
+
+Route::get("/post/{id}/comments", function ($id){
+    $post = Post::find($id);
+
+    return $post->comments;
 });
 
+Route::get("/comment", function (){
+    $comment = \App\Models\Comment::find(1);
+
+    return $comment->commentable;
+});
+
+
+Route::get("post/{id}/tags", function ($id){
+    $post = Post::find($id);
+
+    return $post->tags;
+});
+
+Route::get("tags", function (){
+    $tag = \App\Models\Tag::find(3);
+
+    return $tag->posts;
+});
 require __DIR__.'/auth.php';

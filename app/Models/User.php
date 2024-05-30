@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Nette\Utils\Image;
 
 class User extends Authenticatable
 {
@@ -47,12 +50,18 @@ class User extends Authenticatable
         return $this->hasOne(Post::class);
     }
 
-    public function posts(){
-        return $this->hasMany(Post::class);
-    }
 
     public function roles():BelongsToMany
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    /**
+     * Get the post's image.
+     */
+    public function photo(): MorphOne
+    {
+        return $this->morphOne(Photo::class, 'imageable');
+    }
+
 }
